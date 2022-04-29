@@ -10,6 +10,7 @@
             <tr v-for="(memo, i) in memo" :key="i">
                 <td>{{memo.id}}</td>
                 <td>{{memo.writer}}</td>
+                <!-- 타이틀을 눌렀을 때 /list/:id 링크로 이동 -->
                 <td @click="$router.push(`/page/${memo.id}`)">{{memo.title}}</td>
             </tr>
         </table>
@@ -22,9 +23,13 @@ export default {
             memo: []
         })
     },
+    // 컴포지션이 처음 생성될 때 값을 가져와야 화면에 출력할 수 있다
     created() {
+        // axios를 통해 값을 가져옴
+        // this.memo에 가져온 값 넣어줌
         this.$http.get('/api/memo')
         .then((response)=> {
+            // data를 통해서 값 가져올 수 있다
             console.log(response.data);
             this.memo = response.data;
         })

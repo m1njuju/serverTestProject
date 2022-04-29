@@ -14,6 +14,9 @@ export default {
         })
     },
     created() {
+        // axios 값을 가져옴 단, id값에 따른 1개의 값 - get
+        // 값을 받아와서 this.memo에 저장
+        // route.params.id를 통해 memo의 id값 전달
         this.$http.get(`/api/memo/${this.$route.params.id}`)
         .then((response)=>{
             this.memo = response.data;
