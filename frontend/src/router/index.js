@@ -26,6 +26,14 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/WriteForm.vue')
     }
+  },
+  {
+    // 수정페이지 추가
+    path: '/updateform/:id',
+    name: 'updateform',
+    component: function () {
+      return import('../views/UpdateForm.vue')
+    }
   }
 ]
 
